@@ -30,13 +30,91 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
+                <div id="notification-bar" class="flex-alig-cen">
+                    <div id="bell-image">
+                        <i class="fas fa-bell-slash absolute-center"></i>
+                    </div>
+                    <span>
+							Ricevi notifiche di nuovi messaggi <br />
+							<span id="activate-notify"
+								>Attiva notifiche desktop</span
+							>
+						</span>
+                </div>
+                <div id="search-input">
+                    <div id="input-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" />
+                    </div>
+                </div>
+                <div id="contacts">
+                    <div class="box-preview">
+                        <div class="box-preview-image h-100">
+                            <img src="img/avatar_1.jpg" alt="avatar 1" class="h-100" />
+                        </div>
+                        <div class="box-preview-text">
+                            <h2>Michele</h2>
+                            <span class="preview-text">Tutto fatto!...</span
+								>
+							</div>
+							<div class="box-preview-time">
+								<span class="date">10/01/2020 16:15:22</span>
+                        </div>
+                    </div>
+                </div>
             </section>
-            <section id="right-section"></section>
-        </div>
-        <!-- /Corpo principale applicazione -->
-    </div>
+            <section id="right-section">
+                <div id="chat-top-bar">
+                    <div id="info-chat-contact" class="flex-alig-cen">
+                        <img src="img/avatar_1.jpg" alt="Avatar 1" />
+                        <div class="contact-last-access">
+                            <div class="top-name">Michele</div>
+                            <span>Ultimo accesso oggi 10/01/2021 alle
+									16:15:22</span
+								>
+							</div>
+						</div>
+						<div class="option flex-alig-cen">
+							<i class="fas fa-search"></i>
+							<i class="fas fa-paperclip"></i>
+							<i class="fas fa-ellipsis-v"></i>
+						</div>
+					</div>
+					<div id="main-chat">
+						<div class="message message-send">
+							<span>Hai portato a spasso il cane?</span>
+                            <span class="message-time">10/01/2020 15:30:55</span
+							>
+						</div>
+						<div class="message message-send">
+							<span>Ricordati di dargli da mangiare</span>
+                            <span class="message-time">10/01/2020 15:30:55</span
+							>
+						</div>
+						<div class="message message-received">
+							<span>Tutto fatto!</span>
+                            <span class="message-time">10/01/2020 15:30:55</span
+							>
+						</div>
+					</div>
+					<div id="message-input">
+						<div id="emoticon">
+							<i class="far fa-smile absolute-center"></i>
+						</div>
+						<input
+							id="input-message"
+							type="text"
+							placeholder="Scrivi un messaggio"
+						/>
+						<div id="microphone">
+							<i class="fas fa-microphone absolute-center"></i>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!-- /Corpo principale applicazione -->
+		</div>
 
-    <script src="js/script.js" type="text/javascript"></script>
-</body>
-
+		<script src="js/script.js" type="text/javascript"></script>
+	</body>
 </html>
