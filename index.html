@@ -48,28 +48,31 @@
                     </div>
                 </div>
                 <div id="contacts">
-                    <div class="box-preview">
+                    <div class="box-preview" v-for="contact, index in contacts">
                         <div class="box-preview-image h-100">
-                            <img src="img/avatar_1.jpg" alt="avatar 1" class="h-100" />
+                            <img :src="getContactImage(index)" alt="avatar 1" class="h-100" />
                         </div>
                         <div class="box-preview-text">
-                            <h2>Michele</h2>
-                            <span class="preview-text">Tutto fatto!...</span
+                            <h2>{{contact.name}}</h2>
+                            <span class="preview-text">{{getLastMessage(index)}}</span
 								>
 							</div>
 							<div class="box-preview-time">
-								<span class="date">10/01/2020 16:15:22</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="right-section">
-                <div id="chat-top-bar">
-                    <div id="info-chat-contact" class="flex-alig-cen">
-                        <img src="img/avatar_1.jpg" alt="Avatar 1" />
-                        <div class="contact-last-access">
-                            <div class="top-name">Michele</div>
-                            <span>Ultimo accesso oggi 10/01/2021 alle
+								<span class="date"
+									>{{getLastMessageDate(index)}}</span
+								>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section id="right-section">
+					<div id="chat-top-bar">
+						<div id="info-chat-contact" class="flex-alig-cen">
+							<img src="img/avatar_1.jpg" alt="Avatar 1" />
+							<div class="contact-last-access">
+								<div class="top-name">Michele</div>
+								<span
+									>Ultimo accesso oggi 10/01/2021 alle
 									16:15:22</span
 								>
 							</div>

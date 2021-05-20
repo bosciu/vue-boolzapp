@@ -85,5 +85,19 @@ const app = new Vue({
             }
         ]
     },
-    methods: {}
+    methods: {
+        getContactImage: function(contactIndex) {
+            return `img/avatar${this.contacts[contactIndex].avatar}.jpg`;
+        },
+        getLastMessage: function(contactIndex) {
+            const lastUserMessages = this.contacts[contactIndex].messages;
+
+            return lastUserMessages[lastUserMessages.length - 1].text;
+        },
+        getLastMessageDate: function(contactIndex) {
+            const lastUserMessages = this.contacts[contactIndex].messages;
+
+            return lastUserMessages[lastUserMessages.length - 1].date;
+        }
+    }
 });
