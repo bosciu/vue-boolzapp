@@ -10,6 +10,10 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+i {
+    cursor: pointer;
+}
+
 .flex-alig-cen {
     display: flex;
     align-items: center;
@@ -100,6 +104,10 @@ h2 {
     color: #b1b1b1;
 }
 
+.option>i:hover {
+    color: cadetblue;
+}
+
 
 /* Notification bar */
 
@@ -125,8 +133,12 @@ h2 {
 
 #activate-notify {
     font-size: 14px;
-    text-decoration: underline;
     color: #4f7485;
+    cursor: pointer;
+}
+
+#activate-notify:hover {
+    text-decoration: underline;
 }
 
 
@@ -135,7 +147,7 @@ h2 {
 #search-input {
     height: 50px;
     background-color: rgb(250, 250, 250);
-    padding: 10px;
+    padding: 7px;
 }
 
 #input-bar {
@@ -146,7 +158,7 @@ h2 {
 
 #input-bar>i {
     width: 13%;
-    padding: 3px;
+    padding: 5px;
     background-color: white;
     color: #b1b1b1;
     font-size: 22px;
@@ -171,6 +183,15 @@ h2 {
     height: 100px;
     padding: 0 20px;
     border-bottom: 1px solid lightgrey;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #e9ebeb;
+}
+
+.box-preview:hover {
+    background-color: #e9ebeb;
 }
 
 .box-preview-image>img {
@@ -224,12 +245,13 @@ h2 {
 
 .message-send {
     float: right;
-    margin-left: 11%;
+    clear: both;
     background-color: #d5f8ba;
 }
 
 .message-received {
     float: left;
+    clear: both;
     background-color: white;
 }
 
@@ -254,6 +276,10 @@ h2 {
     border-left: 1px solid lightgrey;
 }
 
+#message-input i:hover {
+    color: black;
+}
+
 #emoticon,
 #microphone {
     position: relative;
@@ -264,4 +290,14 @@ h2 {
 
 #input-message {
     width: 80%;
+    height: 70%;
+    align-self: center;
+    padding-left: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+input:focus-visible {
+    outline: none;
 }

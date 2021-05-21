@@ -1,6 +1,6 @@
-/* Replica della grafica (immagine in allegato) con la possibilità di avere messaggi scritti dall’utente (verdi) e dall’interlocutore (bianco) assegnando due classi CSS diverse;
--Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto, ricavandoli dall'array contacts qui allegato
- */
+/* Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione
+Click sul contatto mostra la conversazione del contatto cliccato */
+
 const app = new Vue({
     el: "#root",
     data: {
@@ -83,11 +83,16 @@ const app = new Vue({
                     }
                 ]
             }
-        ]
+        ],
+        selectedContact: 0
     },
     methods: {
         getContactImage: function(contactIndex) {
             return `img/avatar${this.contacts[contactIndex].avatar}.jpg`;
+        },
+        getActiveContactImage: function(activeContact) {
+            activeContact = this.selectedContact;
+            return `img/avatar${this.contacts[activeContact].avatar}.jpg`;
         },
         getLastMessage: function(contactIndex) {
             const lastUserMessages = this.contacts[contactIndex].messages;
@@ -98,6 +103,16 @@ const app = new Vue({
             const lastUserMessages = this.contacts[contactIndex].messages;
 
             return lastUserMessages[lastUserMessages.length - 1].date;
+        },
+        setSelectedContact: function(index) {
+            this.selectedContact = index;
+        },
+        lastAccessCompiler: function() {
+            const lastUserMessages =
+                this.contacts[this.selectedContact].messages;
+            const strings =
+                lastUserMessages[lastUserMessages.length - 1].date.split(" ");
+            return `Ultimo accesso oggi ${strings[0]} alle ${strings[1]}`;
         }
     }
 });
