@@ -99,10 +99,10 @@ const app = new Vue({
 
             const lastUserMessage =
                 lastUserMessages[lastUserMessages.length - 1].text;
-            if (lastUserMessage.length < 16) {
+            if (lastUserMessage.length < 30) {
                 return lastUserMessage;
             } else {
-                return `${lastUserMessage.substring(0, 17)}...`;
+                return `${lastUserMessage.substring(0, 30)}...`;
             }
         },
         getLastMessageDate: function(contactIndex) {
@@ -116,8 +116,13 @@ const app = new Vue({
         lastAccessCompiler: function() {
             const lastUserMessages =
                 this.contacts[this.selectedContact].messages;
+            const lastReceivedMessage = lastUserMessages.filter(
+                (element) => element.status == "received"
+            );
             const strings =
-                lastUserMessages[lastUserMessages.length - 1].date.split(" ");
+                lastReceivedMessage[lastReceivedMessage.length - 1].date.split(
+                    " "
+                );
             return `Ultimo accesso oggi ${strings[0]} alle ${strings[1]}`;
         }
     }
