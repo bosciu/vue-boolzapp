@@ -97,7 +97,13 @@ const app = new Vue({
         getLastMessage: function(contactIndex) {
             const lastUserMessages = this.contacts[contactIndex].messages;
 
-            return lastUserMessages[lastUserMessages.length - 1].text;
+            const lastUserMessage =
+                lastUserMessages[lastUserMessages.length - 1].text;
+            if (lastUserMessage.length < 16) {
+                return lastUserMessage;
+            } else {
+                return `${lastUserMessage.substring(0, 17)}...`;
+            }
         },
         getLastMessageDate: function(contactIndex) {
             const lastUserMessages = this.contacts[contactIndex].messages;

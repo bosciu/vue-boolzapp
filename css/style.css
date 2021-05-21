@@ -78,10 +78,6 @@ h2 {
     background-color: #eaeaea;
 }
 
-#info-main-user {
-    width: 60%;
-}
-
 #info-main-user>img,
 #info-chat-contact>img {
     height: 100%;
@@ -102,10 +98,6 @@ h2 {
     margin: 0 10px;
     font-size: 26px;
     color: #b1b1b1;
-}
-
-.option>i:hover {
-    color: cadetblue;
 }
 
 
@@ -135,10 +127,6 @@ h2 {
     font-size: 14px;
     color: #4f7485;
     cursor: pointer;
-}
-
-#activate-notify:hover {
-    text-decoration: underline;
 }
 
 
@@ -187,10 +175,6 @@ h2 {
 }
 
 .active {
-    background-color: #e9ebeb;
-}
-
-.box-preview:hover {
     background-color: #e9ebeb;
 }
 
@@ -276,10 +260,6 @@ h2 {
     border-left: 1px solid lightgrey;
 }
 
-#message-input i:hover {
-    color: black;
-}
-
 #emoticon,
 #microphone {
     position: relative;
@@ -300,4 +280,23 @@ h2 {
 
 input:focus-visible {
     outline: none;
+}
+
+
+/* HOVER */
+
+.option>i:hover {
+    color: cadetblue;
+}
+
+#activate-notify:hover {
+    text-decoration: underline;
+}
+
+.box-preview:hover {
+    background-color: #e9ebeb;
+}
+
+#message-input i:hover {
+    color: black;
 }
