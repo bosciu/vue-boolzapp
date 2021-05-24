@@ -24,6 +24,11 @@ const app = new Vue({
                         date: "10/01/2020 16:15:22",
                         text: "Tutto fatto!",
                         status: "received"
+                    },
+                    {
+                        date: "24/05/2021 13:06:21",
+                        text: 'Messaggio per ultimo accesso <b>"oggi"</b>',
+                        status: "received"
                     }
                 ]
             },
@@ -127,7 +132,11 @@ const app = new Vue({
                 lastReceivedMessage[lastReceivedMessage.length - 1].date.split(
                     " "
                 );
-            return `Ultimo accesso oggi ${strings[0]} alle ${strings[1]}`;
+            if (strings[0] == dayjs().format("DD/MM/YYYY")) {
+                return `Ultimo accesso oggi alle ${strings[1]}`;
+            } else {
+                return `Ultimo accesso il ${strings[0]} alle ${strings[1]}`;
+            }
         },
         messageSend: function() {
             if (this.outgoingMessage.trim().length > 0) {
