@@ -2,6 +2,9 @@ const scrollToLastMessage = () => {
     const messagesList = document.getElementsByClassName("message");
     messagesList[messagesList.length - 1].scrollIntoView();
 };
+const reduceHour = () => {
+    return parseInt(dayjs().format("HH")) - 3;
+};
 
 const app = new Vue({
     el: "#root",
@@ -26,7 +29,9 @@ const app = new Vue({
                         status: "received"
                     },
                     {
-                        date: "24/05/2021 13:06:21",
+                        date: dayjs().format(
+                            "DD/MM/YYYY " + reduceHour() + ":mm:ss"
+                        ),
                         text: 'Messaggio per ultimo accesso "oggi"',
                         status: "received"
                     }
