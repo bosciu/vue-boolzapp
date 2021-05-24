@@ -1,5 +1,7 @@
-/* Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione
-Click sul contatto mostra la conversazione del contatto cliccato */
+const scrollToLastMessage = () => {
+    const messagesList = document.getElementsByClassName("message");
+    messagesList[messagesList.length - 1].scrollIntoView();
+};
 
 const app = new Vue({
     el: "#root",
@@ -84,15 +86,20 @@ const app = new Vue({
                 ]
             }
         ],
-        selectedContact: 0
+        selectedContact: 0,
+        outgoingMessage: ""
     },
     methods: {
+        setSelectedContact: function(index) {
+            this.selectedContact = index;
+        },
         getContactImage: function(contactIndex) {
             return `img/avatar${this.contacts[contactIndex].avatar}.jpg`;
         },
-        getActiveContactImage: function(activeContact) {
-            activeContact = this.selectedContact;
-            return `img/avatar${this.contacts[activeContact].avatar}.jpg`;
+        getActiveContactImage: function() {
+            return `img/avatar${
+				this.contacts[this.selectedContact].avatar
+			}.jpg`;
         },
         getLastMessage: function(contactIndex) {
             const lastUserMessages = this.contacts[contactIndex].messages;
@@ -110,9 +117,6 @@ const app = new Vue({
 
             return lastUserMessages[lastUserMessages.length - 1].date;
         },
-        setSelectedContact: function(index) {
-            this.selectedContact = index;
-        },
         lastAccessCompiler: function() {
             const lastUserMessages =
                 this.contacts[this.selectedContact].messages;
@@ -124,6 +128,22 @@ const app = new Vue({
                     " "
                 );
             return `Ultimo accesso oggi ${strings[0]} alle ${strings[1]}`;
+        },
+        messageSend: function() {
+            if (this.outgoingMessage.trim().length > 0) {
+                this.contacts[this.selectedContact].messages.push({
+                    date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
+                    text: this.outgoingMessage,
+                    status: "sent"
+                });
+                this.outgoingMessage = "";
+            }
         }
+    },
+    mounted: function() {
+        scrollToLastMessage();
+    },
+    updated: function() {
+        scrollToLastMessage();
     }
 });

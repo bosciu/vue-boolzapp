@@ -54,12 +54,12 @@ h2 {
 }
 
 #left-section {
-    width: 40%;
+    width: 35%;
     background-color: white;
 }
 
 #right-section {
-    width: 60%;
+    width: 65%;
 }
 
 
@@ -169,7 +169,7 @@ h2 {
 .box-preview {
     display: flex;
     height: 100px;
-    padding: 0 20px;
+    padding-left: 20px;
     border-bottom: 1px solid lightgrey;
     cursor: pointer;
 }
@@ -213,10 +213,16 @@ h2 {
 }
 
 #main-chat {
+    display: flex;
+    flex-direction: column;
     height: calc(100% - 160px);
-    padding: 8%;
+    padding: 0 8% 5%;
     overflow-y: scroll;
     background-image: url(../img/mine.jpg);
+}
+
+#scroll-bottom {
+    margin-top: auto;
 }
 
 .message {
@@ -228,14 +234,11 @@ h2 {
 }
 
 .message-send {
-    float: right;
-    clear: both;
+    align-self: flex-end;
     background-color: #d5f8ba;
 }
 
 .message-received {
-    float: left;
-    clear: both;
     background-color: white;
 }
 
@@ -245,12 +248,6 @@ h2 {
     right: 3%;
     font-size: 12px;
     color: #6b7376;
-}
-
-#main-chat::after {
-    content: "";
-    clear: both;
-    display: table;
 }
 
 #message-input {

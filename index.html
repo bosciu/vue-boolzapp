@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet" />
@@ -18,6 +19,7 @@
     <div id="root" class="flex-alig-cen">
         <!-- Corpo principale applicazione -->
         <div id="application">
+            <!-- Sezione sinistra -->
             <section id="left-section">
                 <div id="main-user-bar">
                     <div id="info-main-user" class="flex-alig-cen">
@@ -65,6 +67,8 @@
 						</div>
 					</div>
 				</section>
+				<!-- /Sezione sinistra -->
+				<!-- Serzione destra -->
 				<section id="right-section">
 					<div id="chat-top-bar">
 						<div id="info-chat-contact" class="flex-alig-cen">
@@ -85,22 +89,28 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
+                <!-- Corpo principale chat -->
                 <div id="main-chat">
-                    <div v-for="message, index in contacts[selectedContact].messages" class="message message-send" :class="message.status == 'sent' ? 'message-send':'message-received'">
+                    <div id="scroll-bottom"></div>
+                    <div v-for="message, index in contacts[selectedContact].messages" class="message" :class="message.status == 'sent' ? 'message-send':'message-received'">
                         <span>{{message.text}}</span>
                         <span class="message-time">{{message.date}}</span>
                     </div>
                 </div>
+                <!-- /Corpo principale chat -->
+                <!-- Barra invio messaggio -->
                 <div id="message-input">
                     <div id="emoticon">
                         <i class="far fa-smile absolute-center"></i>
                     </div>
-                    <input id="input-message" type="text" placeholder="Scrivi un messaggio" />
+                    <input id="input-message" type="text" placeholder="Scrivi un messaggio" v-model="outgoingMessage" @keyup.enter="messageSend()" />
                     <div id="microphone">
                         <i class="fas fa-microphone absolute-center"></i>
                     </div>
                 </div>
+                <!-- /Barra invio messaggio -->
             </section>
+            <!-- /Serzione destra -->
         </div>
         <!-- /Corpo principale applicazione -->
     </div>
