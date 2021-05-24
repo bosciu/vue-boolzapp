@@ -1,3 +1,5 @@
+/* ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo. */
+
 const scrollToLastMessage = () => {
     const messagesList = document.getElementsByClassName("message");
     messagesList[messagesList.length - 1].scrollIntoView();
@@ -151,6 +153,13 @@ const app = new Vue({
                     status: "sent"
                 });
                 this.outgoingMessage = "";
+                setTimeout(() => {
+                    this.contacts[this.selectedContact].messages.push({
+                        date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
+                        text: "ok",
+                        status: "received"
+                    });
+                }, 1000);
             }
         }
     },
