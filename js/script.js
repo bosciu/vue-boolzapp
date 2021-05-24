@@ -27,7 +27,7 @@ const app = new Vue({
                     },
                     {
                         date: "24/05/2021 13:06:21",
-                        text: 'Messaggio per ultimo accesso <b>"oggi"</b>',
+                        text: 'Messaggio per ultimo accesso "oggi"',
                         status: "received"
                     }
                 ]
