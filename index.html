@@ -46,11 +46,11 @@
                 <div id="search-input">
                     <div id="input-bar">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat" />
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchField" @keyup="searchContact()" />
                     </div>
                 </div>
                 <div id="contacts">
-                    <div class="box-preview" v-for="contact, index in contacts" :class="selectedContact == index ? 'active':''" @click="setSelectedContact(index)">
+                    <div class="box-preview" v-for="contact, index in contacts" :class="{active:selectedContact == index, no_visible:contact.visible==false}" @click="setSelectedContact(index)">
                         <div class="box-preview-image h-100">
                             <img :src="getContactImage(index)" :alt="contact.name" class="h-100" />
                         </div>

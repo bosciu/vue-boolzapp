@@ -178,6 +178,10 @@ h2 {
     background-color: #e9ebeb;
 }
 
+.no_visible {
+    display: none;
+}
+
 .box-preview-image>img {
     padding: 12px;
     border-radius: 50%;

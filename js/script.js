@@ -1,4 +1,4 @@
-/* ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo. */
+/* scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina) */
 
 const scrollToLastMessage = () => {
     const messagesList = document.getElementsByClassName("message");
@@ -99,7 +99,8 @@ const app = new Vue({
             }
         ],
         selectedContact: 0,
-        outgoingMessage: ""
+        outgoingMessage: "",
+        searchField: ""
     },
     methods: {
         setSelectedContact: function(index) {
@@ -161,6 +162,17 @@ const app = new Vue({
                     });
                 }, 1000);
             }
+        },
+        searchContact: function() {
+            this.contacts.forEach((element) => {
+                if (
+                    element.name
+                    .toLowerCase()
+                    .startsWith(this.searchField.toLowerCase())
+                ) {
+                    element.visible = true;
+                } else element.visible = false;
+            });
         }
     },
     mounted: function() {
