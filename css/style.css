@@ -261,6 +261,43 @@ h2 {
     border-left: 1px solid lightgrey;
 }
 
+.message-option {
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    font-size: 20px;
+    color: #b1b1b1;
+    opacity: 1;
+}
+
+
+/* .message:hover .message-option {
+    opacity: 1;
+} */
+
+.option-dropdown {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    z-index: 10;
+    width: 180px;
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 8px 16px black;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.option-dropdown>div:first-child {
+    margin-bottom: 12px;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
 #emoticon,
 #microphone {
     position: relative;

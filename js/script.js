@@ -100,7 +100,8 @@ const app = new Vue({
         ],
         selectedContact: 0,
         outgoingMessage: "",
-        searchField: ""
+        searchField: "",
+        optionVisible: false
     },
     methods: {
         setSelectedContact: function(index) {
@@ -173,6 +174,35 @@ const app = new Vue({
                     element.visible = true;
                 } else element.visible = false;
             });
+        },
+        optionToggle: function(index) {
+            const dropdowns =
+                document.getElementsByClassName("option-dropdown");
+            this.optionVisible = !this.optionVisible;
+            if (dropdowns[index].className == "option-dropdown") {
+                dropdowns[index].classList.add("display-inline-block");
+            } else if (
+                dropdowns[index].className ==
+                "option-dropdown display-inline-block"
+            ) {
+                dropdowns[index].className = "option-dropdown";
+            }
+        },
+        messageInfo: function(index) {
+            alert(
+                `Il messaggio dice: ${
+					this.contacts[this.selectedContact].messages[index].text
+				}
+                
+                Ricevuto alle ${
+					this.contacts[this.selectedContact].messages[index].date
+				}`
+            );
+        },
+        deleteMessage: function(index) {
+            document.getElementsByClassName("message")[index].style.display =
+                "none";
+            this.optionVisible = !this.optionVisible;
         }
     },
     mounted: function() {

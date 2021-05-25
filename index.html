@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div id="contacts">
-                    <div class="box-preview" v-for="contact, index in contacts" :class="{active:selectedContact == index, no_visible:contact.visible==false}" @click="setSelectedContact(index)">
+                    <div class="box-preview" v-for="contact, index in contacts" :class="{'active':selectedContact == index, 'no_visible':contact.visible==false}" @click="setSelectedContact(index)">
                         <div class="box-preview-image h-100">
                             <img :src="getContactImage(index)" :alt="contact.name" class="h-100" />
                         </div>
@@ -95,6 +95,15 @@
                     <div v-for="message, index in contacts[selectedContact].messages" class="message" :class="message.status == 'sent' ? 'message-send':'message-received'">
                         <span>{{message.text}}</span>
                         <span class="message-time">{{message.date}}</span>
+                        <i class="fas fa-chevron-down message-option" @click="optionToggle(index)"></i>
+                        <div class="option-dropdown" v-show="optionVisible">
+                            <div @click="messageInfo(index)">
+                                Info messaggio
+                            </div>
+                            <div @click="deleteMessage(index)">
+                                Cancella messaggio
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /Corpo principale chat -->
