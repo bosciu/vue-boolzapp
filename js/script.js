@@ -2,7 +2,9 @@
 
 const scrollToLastMessage = () => {
     const messagesList = document.getElementsByClassName("message");
-    messagesList[messagesList.length - 1].scrollIntoView();
+    if (messagesList.length != 0) {
+        messagesList[messagesList.length - 1].scrollIntoView();
+    }
 };
 const reduceHour = () => {
     return parseInt(dayjs().format("HH")) - 3;
@@ -101,7 +103,8 @@ const app = new Vue({
         selectedContact: 0,
         outgoingMessage: "",
         searchField: "",
-        optionVisible: false
+        optionVisible: false,
+        toggleIndex: -1
     },
     methods: {
         setSelectedContact: function(index) {
@@ -117,19 +120,21 @@ const app = new Vue({
         },
         getLastMessage: function(contactIndex) {
             const lastUserMessages = this.contacts[contactIndex].messages;
-
-            const lastUserMessage =
-                lastUserMessages[lastUserMessages.length - 1].text;
-            if (lastUserMessage.length < 30) {
-                return lastUserMessage;
-            } else {
-                return `${lastUserMessage.substring(0, 30)}...`;
+            if (lastUserMessages.length != 0) {
+                const lastUserMessage =
+                    lastUserMessages[lastUserMessages.length - 1].text;
+                if (lastUserMessage.length < 30) {
+                    return lastUserMessage;
+                } else {
+                    return `${lastUserMessage.substring(0, 30)}...`;
+                }
             }
         },
         getLastMessageDate: function(contactIndex) {
             const lastUserMessages = this.contacts[contactIndex].messages;
-
-            return lastUserMessages[lastUserMessages.length - 1].date;
+            if (lastUserMessages.length != 0) {
+                return lastUserMessages[lastUserMessages.length - 1].date;
+            }
         },
         lastAccessCompiler: function() {
             const lastUserMessages =
@@ -137,14 +142,16 @@ const app = new Vue({
             const lastReceivedMessage = lastUserMessages.filter(
                 (element) => element.status == "received"
             );
-            const strings =
-                lastReceivedMessage[lastReceivedMessage.length - 1].date.split(
-                    " "
-                );
-            if (strings[0] == dayjs().format("DD/MM/YYYY")) {
-                return `Ultimo accesso oggi alle ${strings[1]}`;
-            } else {
-                return `Ultimo accesso il ${strings[0]} alle ${strings[1]}`;
+            if (lastReceivedMessage != 0) {
+                const strings =
+                    lastReceivedMessage[
+                        lastReceivedMessage.length - 1
+                    ].date.split(" ");
+                if (strings[0] == dayjs().format("DD/MM/YYYY")) {
+                    return `Ultimo accesso oggi alle ${strings[1]}`;
+                } else {
+                    return `Ultimo accesso il ${strings[0]} alle ${strings[1]}`;
+                }
             }
         },
         messageSend: function() {
@@ -176,17 +183,8 @@ const app = new Vue({
             });
         },
         optionToggle: function(index) {
-            const dropdowns =
-                document.getElementsByClassName("option-dropdown");
+            this.toggleIndex = index;
             this.optionVisible = !this.optionVisible;
-            if (dropdowns[index].className == "option-dropdown") {
-                dropdowns[index].classList.add("display-inline-block");
-            } else if (
-                dropdowns[index].className ==
-                "option-dropdown display-inline-block"
-            ) {
-                dropdowns[index].className = "option-dropdown";
-            }
         },
         messageInfo: function(index) {
             alert(
@@ -200,9 +198,8 @@ const app = new Vue({
             );
         },
         deleteMessage: function(index) {
-            document.getElementsByClassName("message")[index].style.display =
-                "none";
-            this.optionVisible = !this.optionVisible;
+            this.contacts[this.selectedContact].messages.splice(index, 1);
+            this.optionVisible = false;
         }
     },
     mounted: function() {

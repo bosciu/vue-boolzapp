@@ -276,7 +276,7 @@ h2 {
 } */
 
 .option-dropdown {
-    display: none;
+    display: inline-block;
     position: absolute;
     top: 30px;
     right: 10px;
@@ -292,10 +292,6 @@ h2 {
 
 .option-dropdown>div:first-child {
     margin-bottom: 12px;
-}
-
-.display-inline-block {
-    display: inline-block;
 }
 
 #emoticon,

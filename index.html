@@ -96,7 +96,7 @@
                         <span>{{message.text}}</span>
                         <span class="message-time">{{message.date}}</span>
                         <i class="fas fa-chevron-down message-option" @click="optionToggle(index)"></i>
-                        <div class="option-dropdown" v-show="optionVisible">
+                        <div class="option-dropdown" v-show="optionVisible && index == toggleIndex">
                             <div @click="messageInfo(index)">
                                 Info messaggio
                             </div>
