@@ -290,8 +290,13 @@ h2 {
     font-size: 14px;
 }
 
-.option-dropdown>div:first-child {
+.option-dropdown>span:first-child {
     margin-bottom: 12px;
+}
+
+.option-dropdown>span {
+    display: inline-block;
+    cursor: pointer;
 }
 
 #emoticon,

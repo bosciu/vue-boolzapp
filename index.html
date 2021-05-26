@@ -97,12 +97,12 @@
                         <span class="message-time">{{message.date}}</span>
                         <i class="fas fa-chevron-down message-option" @click="optionToggle(index)"></i>
                         <div class="option-dropdown" v-show="optionVisible && index == toggleIndex">
-                            <div @click="messageInfo(index)">
-                                Info messaggio
-                            </div>
-                            <div @click="deleteMessage(index)">
-                                Cancella messaggio
-                            </div>
+                            <span @click="messageInfo(index)">
+									Info messaggio
+								</span>
+                            <span @click="deleteMessage(index)">
+									Cancella messaggio
+								</span>
                         </div>
                     </div>
                 </div>

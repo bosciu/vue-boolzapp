@@ -188,11 +188,9 @@ const app = new Vue({
         },
         messageInfo: function(index) {
             alert(
-                `Il messaggio dice: ${
+                `Il messaggio dice:   ${
 					this.contacts[this.selectedContact].messages[index].text
-				}
-                
-                Ricevuto alle ${
+				}\n\nRicevuto alle ${
 					this.contacts[this.selectedContact].messages[index].date
 				}`
             );
